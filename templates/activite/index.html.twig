@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Activite index{% endblock %}
+
+{% block body %}
+<body class="index1">
+    <h1>Activite index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>CodeAct</th>
+                <th>LibAct</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for activite in activites %}
+            <tr>
+                <td>{{ activite.id }}</td>
+                <td>{{ activite.codeAct }}</td>
+                <td>{{ activite.libAct }}</td>
+                <td><img src="{{ activite.image }}"></td>
+               
+                <td>
+                    <a href="{{ path('app_activite_show', {'id': activite.id}) }}">show</a>
+                    <a href="{{ path('app_activite_edit', {'id': activite.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_activite_new') }}">Create new</a>
+    </body>
+{% endblock %}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <link href="{{ asset('css/aa.css') }}" type="text/css" rel="stylesheet" />
+    {% endblock %}
+        {% block javascripts %}
+            <script src="{{asset('js/script.js') }}"></script>
+            
+        {% endblock %}
+        
+    </head>
+    <body>
+<div class="main-banner" id="top">
+        <video autoplay muted loop id="bg-video">
+            <source src="{{asset('css/images/') }}" type="video/mp4" />
+        </video>
+
+        <div class="video-overlay header-text">
+            <div class="caption">
+                
+    <h1 class="register">sign up</h1>
+    <br><br>
+
+    {{ form_start(registrationForm) }}
+
+        {{ form_row(registrationForm.email ,{'label': 'Email'}) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'password'
+        }) }}
+
+        <button type="submit" class="button">Register</button>
+    {{ form_end(registrationForm) }}
+
+            </div>
+        </div>
+    </div>
+

@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Activite index{% endblock %}
+
+{% block body  %}
+    <body class="index1">
+    <h1>Liste D'activites</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">CodeAct</th>
+                <th scope="col">LibAct</th>
+                             <th scope="col">image</th>
+   
+            </tr>
+        </thead>
+        <tbody>
+        {% for activite in activites %}
+            <tr>
+                <td scope="row">{{ activite.codeAct }}</td>
+                <td scope="row">{{ activite.libAct }}</td>
+<td scope="row"><img width=200px src="{{ activite.image }}"></td>              
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+                <br><br>
+            </tr>
+            
+        {% endfor %}
+        </tbody>
+    </table>
+
+  </thead>
+  <tbody>
+   
+    <a href="{{ path('app_activite_index') }}">Modifier la liste D'activtes</a>
+    <br><br></body>
+
+
+
+
+<h1>Liste Des Coach</h1>
+
+ <table class="table table-striped" >
+        <thead>
+            <tr>
+               
+                <th scope="col">CodeCo</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">image</th>
+            </tr>
+        </thead>
+        <tbody>
+   {% for coach in coaches %}
+            <tr>
+                <td scope="row">{{ coach.CodeCo }}</td>
+                <td scope="row">{{ coach.nom }}</td>
+                <td scope="row">{{ coach.prenom }}</td>
+                <td scope="row"><img width=200px src="{{ coach.image }}"></td>
+
+              
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+  </thead>
+  <tbody>
+   
+    <a href="{{ path('app_coach_index') }}">Modifier la liste des Coach</a>
+    <br><br></body>
+
+
+
+<h1>Liste Des Seances</h1>
+
+ <table class="table table-striped" >
+        <thead>
+            <tr>
+                
+                <th scope="col">HeureDeb</th>
+                <th scope="col">HeureFin</th>
+                <th scope="col">DateSe</th>
+                <th scope="col">coach</th>
+                <th scope="col">activite</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for seance in seances %}
+            <tr>
+                <td scope="row">{{ seance.heureDeb ? seance.heureDeb|date('H:i') : '' }}</td>
+                <td scope="row">{{ seance.heureFin ? seance.heureFin|date('H:i') : '' }}</td>
+                <td scope="row">{{ seance.dateSe ? seance.dateSe|date('Y-m-d') : '' }}</td>
+                <td scope="row">Coach {{ seance.CodeCo}}</td>
+                <td scope="row">{{ seance.CodeAct}}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+  </thead>
+  <tbody>
+   
+    <a href="{{ path('app_seance_index') }}">Modifier la liste des Seances</a>
+    
+    
+    </body>
+{% endblock %}
